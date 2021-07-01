@@ -1,5 +1,4 @@
 import React from 'react'
-
 import DynamicImage from '../../components/DynamicImage'
 
 import * as S from './styles'

@@ -7,8 +7,11 @@ import {
   Barlow_500Medium
 } from '@expo-google-fonts/barlow'
 import AppLoading from 'expo-app-loading'
+import { QueryClientProvider } from 'react-query'
 
 import Home from './screens/Home'
+
+import { queryClient } from './services/query-client'
 
 export default function App(): JSX.Element {
   const [fontsLoaded] = useFonts({
@@ -21,9 +24,9 @@ export default function App(): JSX.Element {
   }
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <StatusBar style="light" backgroundColor="transparent" translucent />
       <Home />
-    </>
+    </QueryClientProvider>
   )
 }
