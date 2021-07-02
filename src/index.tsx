@@ -1,5 +1,6 @@
 /* eslint-disable camelcase */
 import React from 'react'
+import { LogBox } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import {
   useFonts,
@@ -12,6 +13,8 @@ import { QueryClientProvider } from 'react-query'
 import Home from './screens/Home'
 
 import { queryClient } from './services/query-client'
+
+LogBox.ignoreLogs(['Setting a timer'])
 
 export default function App(): JSX.Element {
   const [fontsLoaded] = useFonts({
