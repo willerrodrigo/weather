@@ -1,13 +1,8 @@
 import { QueryFunctionContext, useQuery, UseQueryResult } from 'react-query'
 import { WEATHER_API_KEY } from '@env'
 
-import { WeatherResponse } from '../../common/types/api'
+import { WeatherResponse, Coordinates } from '../../common/types'
 import { api } from '../../services/api'
-
-type Coordinates = {
-  lat: number
-  lon: number
-}
 
 export const fetchByCoordinates = async (
   ctx: QueryFunctionContext
@@ -21,7 +16,11 @@ export const fetchByCoordinates = async (
   return data
 }
 
-export const useHomeQuery = (coordinates: Coordinates): UseQueryResult =>
+export const useHomeQuery = (
+  coordinates: Coordinates,
+  enabled = true
+): UseQueryResult =>
   useQuery<WeatherResponse>(['home', coordinates], fetchByCoordinates, {
+    enabled,
     refetchInterval: 120000 // 2 min
   })

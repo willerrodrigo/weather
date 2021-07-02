@@ -1,16 +1,39 @@
-import React from 'react'
-import { View, Text } from 'react-native'
-import { Ionicons } from '@expo/vector-icons'
+import React, { useEffect, useState } from 'react'
+import { View } from 'react-native'
+import * as Location from 'expo-location'
 
 import DynamicImage from '../../components/DynamicImage'
 import Loader from '../../components/Loader'
 
+import { Coordinates } from '../../common/types'
 import { useHomeQuery } from '../../hooks'
 
 import * as S from './styles'
 
 function Home(): JSX.Element {
-  const { isFetching } = useHomeQuery({ lat: -22.040474, lon: -45.6971698 })
+  const [coordinates, setCoordinates] = useState<Coordinates>({} as Coordinates)
+  const { isFetching } = useHomeQuery(
+    coordinates,
+    !!Object.values(coordinates).length
+  )
+
+  useEffect(() => {
+    ;(async () => {
+      const { status } = await Location.requestForegroundPermissionsAsync()
+
+      if (status !== 'granted') {
+        // setErrorMsg('Permission to access location was denied');
+        return
+      }
+
+      const { coords } = await Location.getCurrentPositionAsync()
+
+      setCoordinates({
+        lat: coords.latitude,
+        lon: coords.longitude
+      })
+    })()
+  }, [])
 
   return (
     <S.Container>
