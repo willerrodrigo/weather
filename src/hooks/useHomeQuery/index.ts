@@ -19,7 +19,7 @@ export const fetchByCoordinates = async (
 export const useHomeQuery = (
   coordinates: Coordinates,
   enabled = true
-): UseQueryResult =>
+): UseQueryResult<WeatherResponse> =>
   useQuery<WeatherResponse>(['home', coordinates], fetchByCoordinates, {
     enabled,
     refetchInterval: 120000 // 2 min
