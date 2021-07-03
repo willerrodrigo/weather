@@ -5,7 +5,8 @@ import { StatusBar } from 'expo-status-bar'
 import {
   useFonts,
   Barlow_400Regular,
-  Barlow_500Medium
+  Barlow_500Medium,
+  Barlow_300Light
 } from '@expo-google-fonts/barlow'
 import AppLoading from 'expo-app-loading'
 import { QueryClientProvider } from 'react-query'
@@ -19,7 +20,8 @@ LogBox.ignoreLogs(['Setting a timer'])
 export default function App(): JSX.Element {
   const [fontsLoaded] = useFonts({
     Barlow_400Regular,
-    Barlow_500Medium
+    Barlow_500Medium,
+    Barlow_300Light
   })
 
   if (!fontsLoaded) {
