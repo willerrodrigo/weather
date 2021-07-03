@@ -10,6 +10,7 @@
   "dependencies": {
     "@expo-google-fonts/barlow": "^0.1.0",
     "axios": "^0.21.1",
+    "dayjs": "^1.10.5",
     "expo": "~41.0.1",
     "expo-app-loading": "^1.0.3",
     "expo-font": "~9.1.0",

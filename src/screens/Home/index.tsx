@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { View } from 'react-native'
 import * as Location from 'expo-location'
+import dayjs from 'dayjs'
 
 import DynamicImage from '../../components/DynamicImage'
 import Loader from '../../components/Loader'
@@ -19,6 +19,9 @@ type Permission = {
 function Home(): JSX.Element {
   const [permission, setPermission] = useState({} as Permission)
   const [coordinates, setCoordinates] = useState<Coordinates>({} as Coordinates)
+  const [address, setAddress] = useState<Location.LocationGeocodedAddress>(
+    {} as Location.LocationGeocodedAddress
+  )
   const { isFetching } = useHomeQuery(
     coordinates,
     !!Object.values(coordinates).length
@@ -33,11 +36,19 @@ function Home(): JSX.Element {
         denied: true,
         canAskAgain
       })
+
       return
+    } else {
+      setPermission({
+        denied: false,
+        canAskAgain
+      })
     }
 
     const { coords } = await Location.getCurrentPositionAsync()
+    const [firstAddress] = await Location.reverseGeocodeAsync(coords)
 
+    setAddress(firstAddress)
     setCoordinates({
       lat: coords.latitude,
       lon: coords.longitude
@@ -61,17 +72,22 @@ function Home(): JSX.Element {
     <S.Container>
       <DynamicImage />
 
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: 'white',
-          marginTop: -32,
-          borderTopLeftRadius: 24,
-          borderTopRightRadius: 24
-        }}
-      >
-        {isFetching ? <Loader /> : <></>}
-      </View>
+      <S.Content>
+        {isFetching ? (
+          <Loader />
+        ) : (
+          <S.Header>
+            <S.Time>{dayjs().format('ddd, MMM D, YYYY  |  h:mm')}</S.Time>
+
+            <S.Address>
+              <S.AddressText>
+                {address?.city || address?.district}, {address?.country}
+              </S.AddressText>
+              <S.LocationIcon />
+            </S.Address>
+          </S.Header>
+        )}
+      </S.Content>
     </S.Container>
   )
 }

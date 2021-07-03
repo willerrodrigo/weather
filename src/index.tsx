@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import 'dayjs/locale/pt-br'
 import React from 'react'
 import { LogBox } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
@@ -10,12 +11,15 @@ import {
 } from '@expo-google-fonts/barlow'
 import AppLoading from 'expo-app-loading'
 import { QueryClientProvider } from 'react-query'
+import dayjs from 'dayjs'
 
 import Home from './screens/Home'
 
 import { queryClient } from './services/query-client'
 
 LogBox.ignoreLogs(['Setting a timer'])
+
+dayjs.locale('pt-br')
 
 export default function App(): JSX.Element {
   const [fontsLoaded] = useFonts({
