@@ -13,7 +13,7 @@ export const Info = styled(Text).attrs(() => ({
   preset: 'light'
 }))`
   font-size: 24px;
-  margin: 8px 16px 32px 16px;
+  margin: 8px 0 32px 0;
   color: ${colors.tertiaryLight};
   text-align: center;
 `

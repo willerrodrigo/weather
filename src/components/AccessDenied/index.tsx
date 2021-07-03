@@ -17,10 +17,10 @@ function AccessDenied({ canAskAgain, handlePermission }: Props): JSX.Element {
       <CurrentLocation width={260} height={260} />
 
       <S.Info>
-        {`Acesso à localização negado. ${
+        {`Acesso à localização negado :´( ${
           canAskAgain
             ? ''
-            : 'Habilite a localização nas configurações do aplicativo.'
+            : '\n Habilite a localização nas configurações do aplicativo.'
         }`}
       </S.Info>
 
