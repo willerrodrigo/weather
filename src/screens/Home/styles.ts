@@ -47,3 +47,62 @@ export const LocationIcon = styled(Ionicons).attrs(() => ({
   size: 16,
   color: colors.secondary
 }))``
+
+export const TempWrapper = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 32px;
+`
+
+export const Column = styled.View`
+  align-items: center;
+`
+
+export const WeatherImage = styled.Image`
+  width: 50px;
+  height: 50px;
+`
+
+export const WeatherDescription = styled(Text)`
+  color: ${colors.black};
+  text-transform: capitalize;
+`
+
+export const Row = styled.View`
+  flex-direction: row;
+`
+
+export const CurrentTemp = styled(Text).attrs(() => ({
+  preset: 'light'
+}))`
+  font-size: 64px;
+`
+
+export const Degraus = styled(Text)`
+  color: ${colors.tertiaryLight};
+  font-size: 24px;
+  margin-top: 16px;
+`
+
+export const TempVariation = styled(Text).attrs(() => ({
+  preset: 'light'
+}))`
+  margin: 4px 0;
+`
+
+export const ArrowUp = styled(Ionicons).attrs(() => ({
+  name: 'arrow-up',
+  size: 12,
+  color: colors.tertiaryLight
+}))`
+  margin: 4px 0;
+`
+
+export const ArrowDown = styled(Ionicons).attrs(() => ({
+  name: 'arrow-down',
+  size: 12,
+  color: colors.tertiaryLight
+}))`
+  margin: 4px 0;
+`
