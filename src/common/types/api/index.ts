@@ -5,8 +5,8 @@ type Weather = {
 }
 
 export type CurrentWeather = {
-  temp: number
   weather: Weather[]
+  temp: number
   humidity: number
   pressure: number
   wind_speed: number
@@ -15,14 +15,16 @@ export type CurrentWeather = {
   visibility: number
 }
 
+export type DailyWeather = {
+  weather: Weather[]
+  temp: {
+    max: number
+    min: number
+  }
+  dt: number
+}[]
+
 export type WeatherResponse = {
   current: CurrentWeather
-  daily: {
-    temp: {
-      max: number
-      min: number
-    }
-    dt: number
-    weather: Weather[]
-  }[]
+  daily: DailyWeather
 }

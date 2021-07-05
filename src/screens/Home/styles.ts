@@ -17,6 +17,10 @@ export const Content = styled.View`
   border-top-right-radius: 24px;
 `
 
+export const Scroll = styled.ScrollView.attrs(() => ({
+  nestedScrollEnabled: true
+}))``
+
 export const Header = styled.View`
   flex-direction: row;
   justify-content: space-between;
@@ -51,7 +55,7 @@ export const LocationIcon = styled(Ionicons).attrs(() => ({
 export const InfoWrapper = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
-  margin: 16px 8px;
+  margin: 16px 8px 8px 8px;
 `
 
 export const InfoItem = styled.View`
@@ -102,7 +106,7 @@ export const ArrowUp = styled(Ionicons).attrs(() => ({
   size: 12,
   color: colors.tertiaryLight
 }))`
-  margin: 4px 0;
+  margin: 8px 0;
 `
 
 export const ArrowDown = styled(Ionicons).attrs(() => ({
@@ -110,7 +114,7 @@ export const ArrowDown = styled(Ionicons).attrs(() => ({
   size: 12,
   color: colors.tertiaryLight
 }))`
-  margin: 4px 0;
+  margin: 8px 0;
 `
 
 export const InfoValue = styled(Text)`

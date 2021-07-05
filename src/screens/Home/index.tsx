@@ -5,6 +5,7 @@ import dayjs from 'dayjs'
 import DynamicImage from '../../components/DynamicImage'
 import Loader from '../../components/Loader'
 import AccessDenied from '../../components/AccessDenied'
+import WeatherList from '../../components/WeatherList'
 
 import { CurrentWeather } from '../../common/types/api'
 import { WEATHER_INFOS } from '../../constants'
@@ -118,63 +119,69 @@ function Home(): JSX.Element {
               </S.Address>
             </S.Header>
 
-            <S.InfoWrapper>
-              <S.InfoItem>
-                <S.Column>
-                  <S.WeatherImage
-                    source={{
-                      uri: `https://openweathermap.org/img/wn/${data?.current.weather[0]?.icon}.png`
-                    }}
-                  />
-
-                  <S.WeatherDescription>
-                    {data?.current.weather[0]?.description}
-                  </S.WeatherDescription>
-                </S.Column>
-              </S.InfoItem>
-
-              <S.InfoItem>
-                <S.Row>
-                  <S.CurrentTemp>
-                    {Math.round(data?.current.temp || 0)}
-                  </S.CurrentTemp>
-
-                  <S.Degraus>°C</S.Degraus>
-                </S.Row>
-              </S.InfoItem>
-
-              <S.InfoItem>
-                <S.Column style={{ alignItems: 'flex-end' }}>
-                  <S.Row>
-                    <S.TempVariation>
-                      {Math.round(data?.daily[0]?.temp.max || 0)}°C
-                    </S.TempVariation>
-                    <S.ArrowUp />
-                  </S.Row>
-
-                  <S.Row>
-                    <S.TempVariation>
-                      {Math.round(data?.daily[0]?.temp.min || 0)}°C
-                    </S.TempVariation>
-                    <S.ArrowDown />
-                  </S.Row>
-                </S.Column>
-              </S.InfoItem>
-
-              {WEATHER_INFOS.map(({ key, Icon, unit, label }) => (
-                <S.InfoItem key={key}>
+            <S.Scroll>
+              <S.InfoWrapper>
+                <S.InfoItem>
                   <S.Column>
-                    {<Icon width={32} height={32} />}
+                    <S.WeatherImage
+                      source={{
+                        uri: `https://openweathermap.org/img/wn/${
+                          data?.current.weather[0]?.icon || '01d'
+                        }.png`
+                      }}
+                    />
 
-                    <S.InfoValue>
-                      {parseInfoValue(key as keyof CurrentWeather)} {unit}
-                    </S.InfoValue>
-
-                    <S.InfoLabel>{label}</S.InfoLabel>
+                    <S.WeatherDescription>
+                      {data?.current.weather[0]?.description}
+                    </S.WeatherDescription>
                   </S.Column>
                 </S.InfoItem>
-              ))}
-            </S.InfoWrapper>
+
+                <S.InfoItem>
+                  <S.Row>
+                    <S.CurrentTemp>
+                      {Math.round(data?.current.temp || 0)}
+                    </S.CurrentTemp>
+
+                    <S.Degraus>°C</S.Degraus>
+                  </S.Row>
+                </S.InfoItem>
+
+                <S.InfoItem>
+                  <S.Column style={{ alignItems: 'flex-end' }}>
+                    <S.Row>
+                      <S.TempVariation>
+                        {Math.round(data?.daily[0]?.temp.max || 0)}°C
+                      </S.TempVariation>
+                      <S.ArrowUp />
+                    </S.Row>
+
+                    <S.Row>
+                      <S.TempVariation>
+                        {Math.round(data?.daily[0]?.temp.min || 0)}°C
+                      </S.TempVariation>
+                      <S.ArrowDown />
+                    </S.Row>
+                  </S.Column>
+                </S.InfoItem>
+
+                {WEATHER_INFOS.map(({ key, Icon, unit, label }) => (
+                  <S.InfoItem key={key}>
+                    <S.Column>
+                      {<Icon width={32} height={32} />}
+
+                      <S.InfoValue>
+                        {parseInfoValue(key as keyof CurrentWeather)} {unit}
+                      </S.InfoValue>
+
+                      <S.InfoLabel>{label}</S.InfoLabel>
+                    </S.Column>
+                  </S.InfoItem>
+                ))}
+              </S.InfoWrapper>
+
+              <WeatherList data={data?.daily.slice(1) || []} />
+            </S.Scroll>
           </>
         )}
       </S.Content>
