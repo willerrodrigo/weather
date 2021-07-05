@@ -99,7 +99,7 @@ function Home(): JSX.Element {
 
   return (
     <S.Container>
-      <DynamicImage />
+      <DynamicImage data={data?.current} />
 
       <S.Content>
         {isFetching ? (
@@ -171,7 +171,10 @@ function Home(): JSX.Element {
                       {<Icon width={32} height={32} />}
 
                       <S.InfoValue>
-                        {parseInfoValue(key as keyof CurrentWeather)} {unit}
+                        {data?.current
+                          ? parseInfoValue(key as keyof CurrentWeather)
+                          : 0}{' '}
+                        {unit}
                       </S.InfoValue>
 
                       <S.InfoLabel>{label}</S.InfoLabel>

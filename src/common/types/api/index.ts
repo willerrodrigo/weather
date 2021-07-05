@@ -2,6 +2,7 @@
 type Weather = {
   description: string
   icon: string
+  main: string
 }
 
 export type CurrentWeather = {

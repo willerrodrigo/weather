@@ -11,11 +11,11 @@ import {
 } from '../../screens/Home/styles'
 import * as S from './styles'
 
-type WeatherListProps = {
+type Props = {
   data: DailyWeather
 }
 
-function WeatherList({ data }: WeatherListProps): JSX.Element {
+function WeatherList({ data }: Props): JSX.Element {
   return (
     <S.Container>
       {data.map(weather => (
