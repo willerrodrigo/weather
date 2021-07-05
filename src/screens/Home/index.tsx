@@ -6,6 +6,8 @@ import DynamicImage from '../../components/DynamicImage'
 import Loader from '../../components/Loader'
 import AccessDenied from '../../components/AccessDenied'
 
+import { CurrentWeather } from '../../common/types/api'
+import { WEATHER_INFOS } from '../../constants'
 import { Coordinates } from '../../common/types'
 import { useHomeQuery } from '../../hooks'
 
@@ -22,6 +24,7 @@ function Home(): JSX.Element {
   const [address, setAddress] = useState<Location.LocationGeocodedAddress>(
     {} as Location.LocationGeocodedAddress
   )
+
   const { isFetching, data } = useHomeQuery(
     coordinates,
     !!Object.values(coordinates).length
@@ -59,6 +62,31 @@ function Home(): JSX.Element {
     getCoordinates()
   }, [])
 
+  const parseInfoValue = (key: keyof CurrentWeather): number | string => {
+    const value = data?.current[key] as number
+
+    switch (key) {
+      case 'humidity':
+        return Math.round(value)
+
+      case 'pressure':
+        return Math.round(value)
+
+      case 'wind_speed':
+        return Math.round(value)
+
+      case 'sunrise':
+      case 'sunset':
+        return dayjs(dayjs.unix(value)).format('HH:mm')
+
+      case 'visibility':
+        return Math.round(value / 1000)
+
+      default:
+        return value
+    }
+  }
+
   if (permission.denied) {
     return (
       <AccessDenied
@@ -78,54 +106,75 @@ function Home(): JSX.Element {
         ) : (
           <>
             <S.Header>
-              <S.Time>{dayjs().format('ddd, MMM D, YYYY  |  h:mm')}</S.Time>
+              <S.Time>{dayjs().format('ddd, MMM D, YYYY  |  HH:mm')}</S.Time>
 
               <S.Address>
                 <S.AddressText>
-                  {address?.city || address?.district}, {address?.country}
+                  {address?.city || address?.district || address?.subregion},{' '}
+                  {address?.country}
                 </S.AddressText>
 
                 <S.LocationIcon />
               </S.Address>
             </S.Header>
 
-            <S.TempWrapper>
-              <S.Column>
-                <S.WeatherImage
-                  source={{
-                    uri: `https://openweathermap.org/img/wn/${data?.current.weather[0]?.icon}.png`
-                  }}
-                />
+            <S.InfoWrapper>
+              <S.InfoItem>
+                <S.Column>
+                  <S.WeatherImage
+                    source={{
+                      uri: `https://openweathermap.org/img/wn/${data?.current.weather[0]?.icon}.png`
+                    }}
+                  />
 
-                <S.WeatherDescription>
-                  {data?.current.weather[0]?.description}
-                </S.WeatherDescription>
-              </S.Column>
+                  <S.WeatherDescription>
+                    {data?.current.weather[0]?.description}
+                  </S.WeatherDescription>
+                </S.Column>
+              </S.InfoItem>
 
-              <S.Row>
-                <S.CurrentTemp>
-                  {Math.round(data?.current.temp || 0)}
-                </S.CurrentTemp>
-
-                <S.Degraus>°C</S.Degraus>
-              </S.Row>
-
-              <S.Column>
+              <S.InfoItem>
                 <S.Row>
-                  <S.TempVariation>
-                    {Math.round(data?.daily[0]?.temp.max || 0)}°C
-                  </S.TempVariation>
-                  <S.ArrowUp />
-                </S.Row>
+                  <S.CurrentTemp>
+                    {Math.round(data?.current.temp || 0)}
+                  </S.CurrentTemp>
 
-                <S.Row>
-                  <S.TempVariation>
-                    {Math.round(data?.daily[0]?.temp.min || 0)}°C
-                  </S.TempVariation>
-                  <S.ArrowDown />
+                  <S.Degraus>°C</S.Degraus>
                 </S.Row>
-              </S.Column>
-            </S.TempWrapper>
+              </S.InfoItem>
+
+              <S.InfoItem>
+                <S.Column style={{ alignItems: 'flex-end' }}>
+                  <S.Row>
+                    <S.TempVariation>
+                      {Math.round(data?.daily[0]?.temp.max || 0)}°C
+                    </S.TempVariation>
+                    <S.ArrowUp />
+                  </S.Row>
+
+                  <S.Row>
+                    <S.TempVariation>
+                      {Math.round(data?.daily[0]?.temp.min || 0)}°C
+                    </S.TempVariation>
+                    <S.ArrowDown />
+                  </S.Row>
+                </S.Column>
+              </S.InfoItem>
+
+              {WEATHER_INFOS.map(({ key, Icon, unit, label }) => (
+                <S.InfoItem key={key}>
+                  <S.Column>
+                    {<Icon width={32} height={32} />}
+
+                    <S.InfoValue>
+                      {parseInfoValue(key as keyof CurrentWeather)} {unit}
+                    </S.InfoValue>
+
+                    <S.InfoLabel>{label}</S.InfoLabel>
+                  </S.Column>
+                </S.InfoItem>
+              ))}
+            </S.InfoWrapper>
           </>
         )}
       </S.Content>

@@ -48,11 +48,17 @@ export const LocationIcon = styled(Ionicons).attrs(() => ({
   color: colors.secondary
 }))``
 
-export const TempWrapper = styled.View`
+export const InfoWrapper = styled.View`
   flex-direction: row;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 16px 8px;
+`
+
+export const InfoItem = styled.View`
+  width: 33.33%;
   align-items: center;
-  margin: 16px 32px;
+  justify-content: center;
+  margin-bottom: 32px;
 `
 
 export const Column = styled.View`
@@ -105,4 +111,13 @@ export const ArrowDown = styled(Ionicons).attrs(() => ({
   color: colors.tertiaryLight
 }))`
   margin: 4px 0;
+`
+
+export const InfoValue = styled(Text)`
+  margin: 8px 0 4px 0px;
+`
+
+export const InfoLabel = styled(Text)`
+  color: ${colors.tertiaryLight};
+  font-size: 14px;
 `
