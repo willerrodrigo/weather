@@ -7,6 +7,8 @@ export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
+
+  margin: 0 16px;
 `
 
 export const Info = styled(Text).attrs(() => ({
@@ -19,5 +21,5 @@ export const Info = styled(Text).attrs(() => ({
 `
 
 export const ButtonWrapper = styled.View`
-  width: 80%;
+  width: 88%;
 `

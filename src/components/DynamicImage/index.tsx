@@ -39,7 +39,7 @@ function getImageByTime(data: CurrentWeather): ImageSourcePropType {
 
 function DynamicImage({ data }: Props): JSX.Element {
   const handleWeatherRefetch = async (): Promise<void> => {
-    await queryClient.refetchQueries(['home'])
+    await queryClient.refetchQueries('home', { active: true })
   }
 
   return (

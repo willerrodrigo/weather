@@ -6,6 +6,7 @@ import DynamicImage from '../../components/DynamicImage'
 import Loader from '../../components/Loader'
 import AccessDenied from '../../components/AccessDenied'
 import WeatherList from '../../components/WeatherList'
+import NetworkError from '../../components/NetworkError'
 
 import { CurrentWeather } from '../../common/types/api'
 import { WEATHER_INFOS } from '../../constants'
@@ -26,7 +27,7 @@ function Home(): JSX.Element {
     {} as Location.LocationGeocodedAddress
   )
 
-  const { isFetching, data } = useHomeQuery(
+  const { isFetching, data, error } = useHomeQuery(
     coordinates,
     !!Object.values(coordinates).length
   )
@@ -95,6 +96,10 @@ function Home(): JSX.Element {
         handlePermission={getCoordinates}
       />
     )
+  }
+
+  if (error) {
+    return <NetworkError />
   }
 
   return (
