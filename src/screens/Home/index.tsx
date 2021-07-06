@@ -50,7 +50,9 @@ function Home(): JSX.Element {
       canAskAgain
     })
 
-    const { coords } = await Location.getCurrentPositionAsync()
+    const { coords } = await Location.getCurrentPositionAsync({
+      accuracy: Location.Accuracy.High
+    })
     const [firstAddress] = await Location.reverseGeocodeAsync(coords)
 
     setAddress(firstAddress)
@@ -107,7 +109,7 @@ function Home(): JSX.Element {
       <DynamicImage data={data?.current} />
 
       <S.Content>
-        {isFetching ? (
+        {isFetching || !data ? (
           <Loader />
         ) : (
           <>
