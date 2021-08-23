@@ -33,33 +33,37 @@ function Home(): JSX.Element {
   )
 
   const getCoordinates = async (): Promise<void> => {
-    const { status, canAskAgain } =
-      await Location.requestForegroundPermissionsAsync()
+    try {
+      const { status, canAskAgain } =
+        await Location.requestForegroundPermissionsAsync()
 
-    if (status !== 'granted') {
+      if (status !== 'granted') {
+        setPermission({
+          denied: true,
+          canAskAgain
+        })
+
+        return
+      }
+
       setPermission({
-        denied: true,
+        denied: false,
         canAskAgain
       })
 
-      return
+      const { coords } = await Location.getCurrentPositionAsync({
+        accuracy: Location.Accuracy.High
+      })
+      const [firstAddress] = await Location.reverseGeocodeAsync(coords)
+
+      setAddress(firstAddress)
+      setCoordinates({
+        lat: coords.latitude,
+        lon: coords.longitude
+      })
+    } catch (error) {
+      console.log('getCoordinates', error)
     }
-
-    setPermission({
-      denied: false,
-      canAskAgain
-    })
-
-    const { coords } = await Location.getCurrentPositionAsync({
-      accuracy: Location.Accuracy.High
-    })
-    const [firstAddress] = await Location.reverseGeocodeAsync(coords)
-
-    setAddress(firstAddress)
-    setCoordinates({
-      lat: coords.latitude,
-      lon: coords.longitude
-    })
   }
 
   useEffect(() => {
