@@ -20,15 +20,11 @@
 
 ## :computer: Projeto
 
- Esse aplicativo foi um desafio proposto pela [Platform Builders](https://www.platformbuilders.io/), onde o foco é consultar alguns dados climáticos de acordo com a localização atual do usuário. Foi usado como provedor de dados a API do [Open Weather Map](https://openweathermap.org/).
+ O foco desse aplicativo é consultar alguns dados climáticos de acordo com a localização atual do usuário. Foi usado como provedor de dados a API do [Open Weather Map](https://openweathermap.org/).
 
 <p align="center">
   <img alt="Ecoleta" src=".github/app-preview.png" width="100%">
 </p>
-
-## :warning: Atenção
-
- Esse projeto ainda não foi testado para IOS, pois não consegui acesso à um ambiente de desenvolvimento (Mac) para testa-lo. :disappointed:
 
 ## :rocket: Tecnologias
 
