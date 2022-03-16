@@ -12,10 +12,12 @@ import {
 import AppLoading from 'expo-app-loading'
 import { QueryClientProvider } from 'react-query'
 import dayjs from 'dayjs'
+import { ThemeProvider } from 'styled-components/native'
 
 import Home from 'screens/Home'
 
 import { queryClient } from 'services/query-client'
+import { theme } from 'styles'
 
 LogBox.ignoreLogs(['Setting a timer'])
 
@@ -33,9 +35,11 @@ export default function App(): JSX.Element {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <StatusBar style="light" backgroundColor="transparent" translucent />
-      <Home />
-    </QueryClientProvider>
+    <ThemeProvider theme={theme}>
+      <QueryClientProvider client={queryClient}>
+        <StatusBar style="light" backgroundColor="transparent" translucent />
+        <Home />
+      </QueryClientProvider>
+    </ThemeProvider>
   )
 }

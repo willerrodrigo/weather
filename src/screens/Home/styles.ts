@@ -2,16 +2,15 @@ import styled from 'styled-components/native'
 import { Ionicons } from '@expo/vector-icons'
 
 import Text from 'components/Text'
-import { colors } from 'styles'
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
 `
 
 export const Content = styled.View`
   flex: 1;
-  background-color: ${colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
   margin-top: -32px;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
@@ -30,26 +29,26 @@ export const Time = styled(Text).attrs(() => ({
   preset: 'regular'
 }))`
   padding: 16px;
-  color: ${colors.tertiaryLight};
+  color: ${({ theme }) => theme.colors.tertiaryLight};
 `
 
 export const Address = styled.View`
   flex-direction: row;
   padding: 16px;
-  background-color: ${colors.secondaryLight};
+  background-color: ${({ theme }) => theme.colors.secondaryLight};
   border-bottom-left-radius: 24px;
   align-items: center;
 `
 
 export const AddressText = styled(Text)`
-  color: ${colors.secondary};
+  color: ${({ theme }) => theme.colors.secondary};
   margin-right: 4px;
 `
 
-export const LocationIcon = styled(Ionicons).attrs(() => ({
+export const LocationIcon = styled(Ionicons).attrs(({ theme }) => ({
   name: 'location-sharp',
   size: 16,
-  color: colors.secondary
+  color: theme.colors.secondary
 }))``
 
 export const InfoWrapper = styled.View`
@@ -75,7 +74,7 @@ export const WeatherImage = styled.Image`
 `
 
 export const WeatherDescription = styled(Text)`
-  color: ${colors.black};
+  color: ${({ theme }) => theme.colors.black};
   text-transform: capitalize;
 `
 
@@ -90,7 +89,7 @@ export const CurrentTemp = styled(Text).attrs(() => ({
 `
 
 export const Degraus = styled(Text)`
-  color: ${colors.tertiaryLight};
+  color: ${({ theme }) => theme.colors.tertiaryLight};
   font-size: 24px;
   margin-top: 16px;
 `
@@ -101,18 +100,18 @@ export const TempVariation = styled(Text).attrs(() => ({
   margin: 4px 0;
 `
 
-export const ArrowUp = styled(Ionicons).attrs(() => ({
+export const ArrowUp = styled(Ionicons).attrs(({ theme }) => ({
   name: 'arrow-up',
   size: 12,
-  color: colors.tertiaryLight
+  color: theme.colors.tertiaryLight
 }))`
   margin: 8px 0;
 `
 
-export const ArrowDown = styled(Ionicons).attrs(() => ({
+export const ArrowDown = styled(Ionicons).attrs(({ theme }) => ({
   name: 'arrow-down',
   size: 12,
-  color: colors.tertiaryLight
+  color: theme.colors.tertiaryLight
 }))`
   margin: 8px 0;
 `
@@ -122,6 +121,6 @@ export const InfoValue = styled(Text)`
 `
 
 export const InfoLabel = styled(Text)`
-  color: ${colors.tertiaryLight};
+  color: ${({ theme }) => theme.colors.tertiaryLight};
   font-size: 14px;
 `

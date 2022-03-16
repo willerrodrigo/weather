@@ -1,7 +1,6 @@
 import styled from 'styled-components/native'
 
 import { InfoValue, Row as SharedRow } from 'screens/Home/styles'
-import { colors } from 'styles'
 
 export const Container = styled.ScrollView.attrs(() => ({
   horizontal: true,
@@ -10,7 +9,7 @@ export const Container = styled.ScrollView.attrs(() => ({
 }))``
 
 export const DayWrapper = styled.View`
-  background-color: ${colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
   margin: 0 8px;
   border-radius: 16px;
 
