@@ -1,8 +1,8 @@
 import { QueryFunctionContext, useQuery, UseQueryResult } from 'react-query'
 import { WEATHER_API_KEY } from '@env'
 
-import { WeatherResponse, Coordinates } from '../../common/types'
-import { api } from '../../services/api'
+import { WeatherResponse, Coordinates } from 'common/types'
+import { api } from 'services/api'
 
 export const fetchByCoordinates = async (
   ctx: QueryFunctionContext

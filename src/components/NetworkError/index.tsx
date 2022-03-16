@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { queryClient } from '../../services/query-client'
+import { queryClient } from 'services/query-client'
 
-import NetError from '../../assets/svg/network-error.svg'
+import NetError from 'assets/svg/network-error.svg'
 
-import Button from '../Button'
+import Button from 'components/Button'
 
-import { Container, Info, ButtonWrapper } from '../AccessDenied/styles'
+import { Container, Info, ButtonWrapper } from 'components/AccessDenied/styles'
 
 function NetworkError(): JSX.Element {
   const handleWeatherRefetch = async (): Promise<void> => {

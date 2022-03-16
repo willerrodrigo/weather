@@ -1,14 +1,14 @@
 import React from 'react'
 import dayjs from 'dayjs'
 
-import { DailyWeather } from '../../common/types'
+import { DailyWeather } from 'common/types'
 
 import {
   WeatherImage,
   TempVariation,
   ArrowUp,
   ArrowDown
-} from '../../screens/Home/styles'
+} from 'screens/Home/styles'
 import * as S from './styles'
 
 type Props = {

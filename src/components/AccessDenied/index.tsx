@@ -1,8 +1,8 @@
 import React from 'react'
 
-import CurrentLocation from '../../assets/svg/current-location.svg'
+import CurrentLocation from 'assets/svg/current-location.svg'
 
-import Button from '../../components/Button'
+import Button from 'components/Button'
 
 import * as S from './styles'
 

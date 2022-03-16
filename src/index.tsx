@@ -13,9 +13,9 @@ import AppLoading from 'expo-app-loading'
 import { QueryClientProvider } from 'react-query'
 import dayjs from 'dayjs'
 
-import Home from './screens/Home'
+import Home from 'screens/Home'
 
-import { queryClient } from './services/query-client'
+import { queryClient } from 'services/query-client'
 
 LogBox.ignoreLogs(['Setting a timer'])
 

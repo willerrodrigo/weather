@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
 import { Fontisto } from '@expo/vector-icons'
 
-import { colors } from '../../styles'
+import { colors } from 'styles'
 
 export const Container = styled.ImageBackground`
   width: 100%;

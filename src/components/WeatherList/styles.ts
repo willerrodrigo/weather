@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
 
-import { InfoValue, Row as SharedRow } from '../../screens/Home/styles'
-import { colors } from '../../styles'
+import { InfoValue, Row as SharedRow } from 'screens/Home/styles'
+import { colors } from 'styles'
 
 export const Container = styled.ScrollView.attrs(() => ({
   horizontal: true,

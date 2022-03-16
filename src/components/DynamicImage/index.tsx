@@ -3,14 +3,14 @@ import dayjs from 'dayjs'
 import { ImageSourcePropType } from 'react-native'
 import { BorderlessButton } from 'react-native-gesture-handler'
 
-import { CurrentWeather } from '../../common/types'
+import { CurrentWeather } from 'common/types'
 
-import { queryClient } from '../../services/query-client'
+import { queryClient } from 'services/query-client'
 
-import DaySunny from '../../assets/images/sunny-day.png'
-import RainySunny from '../../assets/images/rainy-day.png'
-import MoonNight from '../../assets/images/moon-night.png'
-import RainyNight from '../../assets/images/rainy-night.png'
+import DaySunny from 'assets/images/sunny-day.png'
+import RainySunny from 'assets/images/rainy-day.png'
+import MoonNight from 'assets/images/moon-night.png'
+import RainyNight from 'assets/images/rainy-night.png'
 
 import * as S from './styles'
 

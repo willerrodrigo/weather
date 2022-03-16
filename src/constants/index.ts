@@ -1,9 +1,9 @@
-import Humidity from '../assets/svg/humidity.svg'
-import Barometer from '../assets/svg/barometer.svg'
-import Wind from '../assets/svg/wind.svg'
-import Sunrise from '../assets/svg/sunrise.svg'
-import Sunset from '../assets/svg/sunset.svg'
-import Eye from '../assets/svg/eye.svg'
+import Humidity from 'assets/svg/humidity.svg'
+import Barometer from 'assets/svg/barometer.svg'
+import Wind from 'assets/svg/wind.svg'
+import Sunrise from 'assets/svg/sunrise.svg'
+import Sunset from 'assets/svg/sunset.svg'
+import Eye from 'assets/svg/eye.svg'
 
 export const BASE_URL = 'https://api.openweathermap.org'
 
