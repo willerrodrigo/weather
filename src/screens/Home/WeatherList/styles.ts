@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-import { InfoValue, Row as SharedRow } from 'screens/Home/styles'
+import Text from 'components/Text'
 
 export const Container = styled.ScrollView.attrs(() => ({
   horizontal: true,
@@ -23,8 +23,11 @@ export const DayWrapper = styled.View`
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
 `
 
-export const Day = InfoValue
+export const Day = styled(Text)`
+  margin: 8px 0 4px 0px;
+`
 
-export const Row = styled(SharedRow)`
+export const Row = styled.View`
+  flex-direction: row;
   align-items: center;
 `

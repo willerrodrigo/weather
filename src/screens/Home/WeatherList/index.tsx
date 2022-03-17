@@ -8,7 +8,7 @@ import {
   TempVariation,
   ArrowUp,
   ArrowDown
-} from 'screens/Home/styles'
+} from '../CurrentWeather/styles'
 import * as S from './styles'
 
 type Props = {
