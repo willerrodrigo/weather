@@ -8,7 +8,7 @@ interface HeaderProps {
   data: Location.LocationGeocodedAddress
 }
 
-function Header({ data }: HeaderProps): JSX.Element {
+function Address({ data }: HeaderProps): JSX.Element {
   return (
     <S.Container>
       <S.Time>{dayjs().format('ddd, MMM D, YYYY  |  HH:mm')}</S.Time>
@@ -24,4 +24,4 @@ function Header({ data }: HeaderProps): JSX.Element {
   )
 }
 
-export default Header
+export default Address

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import * as Location from 'expo-location'
 
-import Header from './Header'
+import Address from './Address'
 import CurrentWeather from './CurrentWeather'
 import InfoList from './InfoList'
 import WeatherList from './WeatherList'
@@ -101,7 +101,7 @@ function Home(): JSX.Element {
           <Loader />
         ) : (
           <>
-            <Header data={address} />
+            <Address data={address} />
 
             <S.Scroll>
               <CurrentWeather data={data} />
